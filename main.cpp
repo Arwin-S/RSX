@@ -53,10 +53,10 @@ int main(int, char **)
 
 
     Eigen::Vector4d plane = ransac(pc);
-    cout << "Coefficents of Plane (Ax + By +Cz + D):" << endl
-         << plane << endl
-         << endl;
-   // cout << pc << endl<< endl<< endl;
+    // cout << "Coefficents of Plane (Ax + By +Cz + D):" << endl
+    //      << plane << endl
+    //      << endl;
+    cout << pc << endl<< endl<< endl;
 }
 
 Eigen::Vector4d ransac(MatrixXd &in)
