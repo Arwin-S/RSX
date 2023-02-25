@@ -8,6 +8,7 @@
 using namespace std;
 using Eigen::MatrixXd;
 
+//time measurement
 std::stack<clock_t> tictoc_stack;
 void tic();
 void toc();
@@ -40,7 +41,7 @@ int main(int, char **)
 
     // Use Randomly Generated Points to test and visualize RANSAC
 
-    int numPoints = 1000;
+    int numPoints = 10;
     MatrixXd pc = (MatrixXd::Random(numPoints, 3) + MatrixXd::Constant(numPoints, 3, 1)) * 50; // random numbers 0 - 100
     pc.col(2) = pc.col(2).array() * 0.1 + 50;
 
@@ -49,26 +50,13 @@ int main(int, char **)
     pc(numPoints - 1, 2) = 100;
 
     // Experimenting with Segmentation into X-by-X grid
-            // int dim = 2; //2x2 = 4 planes
 
-            // double xMin = pc.col(0).array().minCoeff();
-            // double xMax = pc.col(0).array().maxCoeff();
-            // double xGridSize = (xMax-xMin)/dim;
-            // double yMin = pc.col(1).array().minCoeff();
-            // double yMax = pc.col(1).array().maxCoeff();
-            // double yGridSize = (yMax-yMin)/dim;
-
-            // std::sort(pc.col(0).derived().data(), pc.col(0).derived().data()+pc.col(0).size());
-            // for (int i = 0; i < dim; i++)
-    // {
-    //     //pc.col(1).segment(i*xGridSize,(i+1)*xGridSize);
-    //     std::sort(pc.col(1).segment(i*25,(i+1)*25).derived().data(), pc.col(1).segment(i*25,(i+1)*25).derived().data()+pc.col(1).segment(i*25,(i+1)*25).size());
-    // }
 
     Eigen::Vector4d plane = ransac(pc);
     cout << "Coefficents of Plane (Ax + By +Cz + D):" << endl
          << plane << endl
          << endl;
+   // cout << pc << endl<< endl<< endl;
 }
 
 Eigen::Vector4d ransac(MatrixXd &in)
