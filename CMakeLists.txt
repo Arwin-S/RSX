@@ -1,12 +1,13 @@
 cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
 
-project(planar_segmentation)
+project(traversability_score)
 
 find_package(PCL 1.2 REQUIRED)
 
+# Variables set by the pcl config.cmake.in file
 include_directories(${PCL_INCLUDE_DIRS})
 link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
 
-add_executable (planar_segmentation planar_segmentation.cpp)
-target_link_libraries (planar_segmentation ${PCL_LIBRARIES})
+add_executable (traversability_score main.cpp helpers.cpp)
+target_link_libraries (traversability_score ${PCL_LIBRARIES})

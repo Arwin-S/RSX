@@ -5,6 +5,11 @@
 #include <stack>
 #include <cstdlib>
 #include <cmath>
+#include <pcl/ModelCoefficients.h>
+#include <pcl/io/pcd_io.h>
+#include <pcl/impl/point_types.hpp>
+#include <pcl/segmentation/sac_segmentation.h>
+#include "helpers.h"
 
 using namespace std;
 using Eigen::MatrixXd;
@@ -38,35 +43,64 @@ int main(int, char **)
     //     //   cout << A << endl;
     // }
 
+    // Create the point cloud
+    pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
+
+    // Fill in the cloud data with randomly generated set of 15 points
+    cloud->width  = 15;
+    cloud->height = 1;
+    cloud->points.resize (cloud->width * cloud->height);
+
+    // Generate the data
+    srand(time(0));
+    for (auto& point: *cloud)
+    {
+        point.x = 1024 * rand () / (RAND_MAX + 1.0f);
+        point.y = 1024 * rand () / (RAND_MAX + 1.0f);
+        point.z = 1024 * rand () / (RAND_MAX + 1.0f);
+    }
+
+    // Set a few outliers
+    // (*cloud)[0].z = 2.0;
+    // (*cloud)[3].z = -2.0;
+    // (*cloud)[6].z = 4.0;
+
+    std::cerr << "Point cloud data: " << cloud->size () << " points" << std::endl;
+    for (const auto& point: *cloud)
+    std::cerr << "    " << point.x << " "
+                        << point.y << " "
+                        << point.z << std::endl;
+
 
     // Use Randomly Generated Points to test and visualize RANSAC
     // Point cloud represented as numPoints x 3 matrix where each row represents a coordinate point
-    int numPoints = 1000;
-    MatrixXd pc = (MatrixXd::Random(numPoints, 3) + MatrixXd::Constant(numPoints, 3, 1)) * 50; // random numbers 0 - 100
-    pc.col(2) = pc.col(2).array() * 0.1 + 50;
+    // int numPoints = 1000;
+    // MatrixXd pc = (MatrixXd::Random(numPoints, 3) + MatrixXd::Constant(numPoints, 3, 1)) * 50; // random numbers 0 - 100
+    // pc.col(2) = pc.col(2).array() * 0.1 + 50;
 
-    // 1 point at 0 and 1 point at 100 forces matplotlib plot z axis in range 0 - 100
-    pc(0, 2) = 0;
-    pc(numPoints - 1, 2) = 100;
+    // // 1 point at 0 and 1 point at 100 forces matplotlib plot z axis in range 0 - 100
+    // pc(0, 2) = 0;
+    // pc(numPoints - 1, 2) = 100;
 
-    // Segment point cloud
-    int numVolumes = 16;
-    int dim = std::sqrt(numVolumes);
-    double xMin = pc.col(0).array().minCoeff();
-    double xMax = pc.col(0).array().maxCoeff();
-    double xVolumeSize = (xMax-xMin)/dim;
+    // // Segment point cloud
+    // int numVolumes = 16;
+    // int dim = std::sqrt(numVolumes);
+    // double xMin = pc.col(0).array().minCoeff();
+    // double xMax = pc.col(0).array().maxCoeff();
+    // double xVolumeSize = (xMax-xMin)/dim;
 
-    double yMin = pc.col(1).array().minCoeff();
-    double yMax = pc.col(1).array().maxCoeff();
-    double yVolumeSize = (yMax-yMin)/dim;
+    // double yMin = pc.col(1).array().minCoeff();
+    // double yMax = pc.col(1).array().maxCoeff();
+    // double yVolumeSize = (yMax-yMin)/dim;                
 
-    Eigen::VectorXd xIntervals = VectorXd::LinSpaced(dim, xMin, xMax);
-    Eigen::VectorXd yIntervals = VectorXd::LinSpaced(dim, yMin, yMax);                  
+    // Eigen::Vector4d plane = ransac(pc);
+    // cout << "Coefficents of Plane (Ax + By +Cz + D):" << endl
+    //      << plane << endl
+    //      << endl;
 
-    Eigen::Vector4d plane = ransac(pc);
-    cout << "Coefficents of Plane (Ax + By +Cz + D):" << endl
-         << plane << endl
-         << endl;
+    // calculate the traversability score
+    double score = calculateTraversabilityScore(cloud);
+    std::cout << "traversability score: " << score << std::endl;
 }
 
 Eigen::Vector4d ransac(MatrixXd &in)
