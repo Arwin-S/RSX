@@ -20,33 +20,26 @@ double calculateSlopeFromPlane(double a, double b, double c, double d) {
     return slopeAngle;
 }
 
-// Calculate the roughness of the plane by measuring the standard deviation of each point from the plane
-double calculateRoughnessFromPlane(double a, double b, double c, double d, double threshold, pcl::PointCloud<pcl::PointXYZ>::Ptr& cloud) {
-    double roughness = 0.0;
-    int numPoints = 0;
+// Calculate the accumulated standard deviation of the plane by measuring the standard deviation of each point from the plane
+double calculateStdDevFromPlane(double a, double b, double c, double d, pcl::PointCloud<pcl::PointXYZ>::Ptr& cloud) {
+    double stdDev = 0.0;
+    int numPoints = cloud->points.size();
     double sumDistanceSquared = 0.0;
-    double sumDistance = 0.0;
 
-    int totalPoints = cloud->points.size();
     auto points = cloud->points;
 
-    for (int idx=0; idx<totalPoints; idx++) {
+    // Accumulate the squared distances of all points from the plane
+    for (int idx=0; idx<numPoints; idx++) {
         auto point = points[idx];
         double distance = std::abs(a * point.x + b * point.y + c * point.z + d) / std::sqrt(a*a + b*b + c*c);
-        if (distance < threshold) {
-            numPoints++;
-            sumDistanceSquared += distance*distance;
-            sumDistance += distance;
-        }
+        sumDistanceSquared += distance * distance;
     }
 
-    if (numPoints >= 2) {
-        double meanDistance = sumDistance / numPoints;
-        double varianceDistance = (sumDistanceSquared / numPoints) - (meanDistance * meanDistance);
-        roughness = std::sqrt(varianceDistance);
-    }
+    // Calculate standard deviation
+    double meanSquaredDistance = sumDistanceSquared / numPoints;
+    stdDev = std::sqrt(meanSquaredDistance);
 
-    return roughness;
+    return stdDev;
 }
 
 // Ransac function on a pcl PointCloud
@@ -95,7 +88,8 @@ double calculateTraversabilityScore(pcl::PointCloud<pcl::PointXYZ>::Ptr& cloud) 
     // call ransac on the generated point cloud
     int numPoints = cloud->points.size();
     std::pair<pcl::ModelCoefficients::Ptr, pcl::PointIndices::Ptr> result = ransac_on_cloud(cloud);
-    // need a condition to check if the ransac was successful
+    // ****need a condition to check if the ransac was successful -> generated valid plane***
+
     // Get coefficients of the plane
     double a = result.first->values[0];
     double b = result.first->values[1];
@@ -103,17 +97,9 @@ double calculateTraversabilityScore(pcl::PointCloud<pcl::PointXYZ>::Ptr& cloud) 
     double d = result.first->values[3];
 
     // Calculate parameters from the ransac plane
-    int inlierRatio = result.second->indices.size() / numPoints;
-    double slope = calculateSlopeFromPlane(a, b, c, d);
-    double roughnessThreshold = 2.0;
-    double roughness = calculateRoughnessFromPlane(a, b, c, d, roughnessThreshold, cloud);
+    double standardDeviation = calculateStdDevFromPlane(a, b, c, d, cloud);
 
-    // Hyperparameters 
-    double roughnessParameter = 1.0;
-    double slopeParameter = 1.0;
-    double inlierRatioParameter = 1.0;
-
-    double traversabilityScore = inlierRatio * inlierRatioParameter + slopeParameter * slope + roughness * roughnessParameter;
+    double traversabilityScore = standardDeviation;
     return traversabilityScore;
 
 }

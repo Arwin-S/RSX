@@ -13,8 +13,8 @@ double calculateTraversabilityScore(pcl::PointCloud<pcl::PointXYZ>::Ptr& cloud);
 // Calculate slope from a plane
 double calculateSlopeFromPlane(double a, double b, double c, double d);
 
-// Calculate roughness from RANSAC plane
-double calculateRoughnessFromPlane(double a, double b, double c, double d, double threshold, pcl::PointCloud<pcl::PointXYZ>::Ptr& cloud);
+// Calculate standard deviation of a set of points from a plane
+double calculateStdDevFromPlane(double a, double b, double c, double d, pcl::PointCloud<pcl::PointXYZ>::Ptr& cloud);
 
 // Call ransac algorithm on the point cloud
 std::pair<pcl::ModelCoefficients::Ptr, pcl::PointIndices::Ptr> ransac_on_cloud(pcl::PointCloud<pcl::PointXYZ>::Ptr& cloud);
