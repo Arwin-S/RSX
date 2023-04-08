@@ -57,27 +57,57 @@ include CMakeFiles/segment_pcl.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/segment_pcl.dir/flags.make
 
-CMakeFiles/segment_pcl.dir/segment_pcl.cpp.o: CMakeFiles/segment_pcl.dir/flags.make
-CMakeFiles/segment_pcl.dir/segment_pcl.cpp.o: ../segment_pcl.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rsx/my_ws/Robotics-For-Space-Exploration/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/segment_pcl.dir/segment_pcl.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/segment_pcl.dir/segment_pcl.cpp.o -c /home/rsx/my_ws/Robotics-For-Space-Exploration/segment_pcl.cpp
+CMakeFiles/segment_pcl.dir/csv_io.cpp.o: CMakeFiles/segment_pcl.dir/flags.make
+CMakeFiles/segment_pcl.dir/csv_io.cpp.o: ../csv_io.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rsx/my_ws/Robotics-For-Space-Exploration/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/segment_pcl.dir/csv_io.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/segment_pcl.dir/csv_io.cpp.o -c /home/rsx/my_ws/Robotics-For-Space-Exploration/csv_io.cpp
 
-CMakeFiles/segment_pcl.dir/segment_pcl.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/segment_pcl.dir/segment_pcl.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rsx/my_ws/Robotics-For-Space-Exploration/segment_pcl.cpp > CMakeFiles/segment_pcl.dir/segment_pcl.cpp.i
+CMakeFiles/segment_pcl.dir/csv_io.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/segment_pcl.dir/csv_io.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rsx/my_ws/Robotics-For-Space-Exploration/csv_io.cpp > CMakeFiles/segment_pcl.dir/csv_io.cpp.i
 
-CMakeFiles/segment_pcl.dir/segment_pcl.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/segment_pcl.dir/segment_pcl.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rsx/my_ws/Robotics-For-Space-Exploration/segment_pcl.cpp -o CMakeFiles/segment_pcl.dir/segment_pcl.cpp.s
+CMakeFiles/segment_pcl.dir/csv_io.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/segment_pcl.dir/csv_io.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rsx/my_ws/Robotics-For-Space-Exploration/csv_io.cpp -o CMakeFiles/segment_pcl.dir/csv_io.cpp.s
+
+CMakeFiles/segment_pcl.dir/custom_ransac.cpp.o: CMakeFiles/segment_pcl.dir/flags.make
+CMakeFiles/segment_pcl.dir/custom_ransac.cpp.o: ../custom_ransac.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rsx/my_ws/Robotics-For-Space-Exploration/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/segment_pcl.dir/custom_ransac.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/segment_pcl.dir/custom_ransac.cpp.o -c /home/rsx/my_ws/Robotics-For-Space-Exploration/custom_ransac.cpp
+
+CMakeFiles/segment_pcl.dir/custom_ransac.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/segment_pcl.dir/custom_ransac.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rsx/my_ws/Robotics-For-Space-Exploration/custom_ransac.cpp > CMakeFiles/segment_pcl.dir/custom_ransac.cpp.i
+
+CMakeFiles/segment_pcl.dir/custom_ransac.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/segment_pcl.dir/custom_ransac.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rsx/my_ws/Robotics-For-Space-Exploration/custom_ransac.cpp -o CMakeFiles/segment_pcl.dir/custom_ransac.cpp.s
+
+CMakeFiles/segment_pcl.dir/main.cpp.o: CMakeFiles/segment_pcl.dir/flags.make
+CMakeFiles/segment_pcl.dir/main.cpp.o: ../main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rsx/my_ws/Robotics-For-Space-Exploration/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/segment_pcl.dir/main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/segment_pcl.dir/main.cpp.o -c /home/rsx/my_ws/Robotics-For-Space-Exploration/main.cpp
+
+CMakeFiles/segment_pcl.dir/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/segment_pcl.dir/main.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rsx/my_ws/Robotics-For-Space-Exploration/main.cpp > CMakeFiles/segment_pcl.dir/main.cpp.i
+
+CMakeFiles/segment_pcl.dir/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/segment_pcl.dir/main.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rsx/my_ws/Robotics-For-Space-Exploration/main.cpp -o CMakeFiles/segment_pcl.dir/main.cpp.s
 
 # Object files for target segment_pcl
 segment_pcl_OBJECTS = \
-"CMakeFiles/segment_pcl.dir/segment_pcl.cpp.o"
+"CMakeFiles/segment_pcl.dir/csv_io.cpp.o" \
+"CMakeFiles/segment_pcl.dir/custom_ransac.cpp.o" \
+"CMakeFiles/segment_pcl.dir/main.cpp.o"
 
 # External object files for target segment_pcl
 segment_pcl_EXTERNAL_OBJECTS =
 
-segment_pcl: CMakeFiles/segment_pcl.dir/segment_pcl.cpp.o
+segment_pcl: CMakeFiles/segment_pcl.dir/csv_io.cpp.o
+segment_pcl: CMakeFiles/segment_pcl.dir/custom_ransac.cpp.o
+segment_pcl: CMakeFiles/segment_pcl.dir/main.cpp.o
 segment_pcl: CMakeFiles/segment_pcl.dir/build.make
 segment_pcl: /usr/lib/x86_64-linux-gnu/libpcl_apps.so
 segment_pcl: /usr/lib/x86_64-linux-gnu/libpcl_outofcore.so
@@ -171,7 +201,7 @@ segment_pcl: /usr/lib/x86_64-linux-gnu/libX11.so
 segment_pcl: /usr/lib/x86_64-linux-gnu/libXext.so
 segment_pcl: /usr/lib/x86_64-linux-gnu/libXt.so
 segment_pcl: CMakeFiles/segment_pcl.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/rsx/my_ws/Robotics-For-Space-Exploration/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable segment_pcl"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/rsx/my_ws/Robotics-For-Space-Exploration/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable segment_pcl"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/segment_pcl.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

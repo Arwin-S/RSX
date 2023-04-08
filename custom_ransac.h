@@ -1,8 +1,24 @@
-#include "custom_ransac.h"
+#include <iostream>
+#include <eigen3/Eigen/Dense>
+#include <fstream>
+#include <ctime>
+#include <stack>
+#include <cstdlib>
+#include "csv_io.h"
 
 using namespace std;
 using Eigen::MatrixXd;
 
+// ransac helper functions
+Eigen::Vector4d pointsToPlane(Eigen::Vector3d p1, Eigen::Vector3d p2, Eigen::Vector3d p3);
+int distPlanePoint(const Eigen::Vector4d &plane, const MatrixXd &in, double dist);
+
+Eigen::Vector4d ransac(MatrixXd &in);
+
+
+//Below is sample main function which uses custom ransac function
+
+/*
 int main(int, char **)
 {
     // // Use Point Cloud File
@@ -39,3 +55,4 @@ int main(int, char **)
          << plane << endl
          << endl;
 }
+*/

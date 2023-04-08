@@ -123,32 +123,86 @@ segment_pcl/fast:
 	$(MAKE) -f CMakeFiles/segment_pcl.dir/build.make CMakeFiles/segment_pcl.dir/build
 .PHONY : segment_pcl/fast
 
-segment_pcl.o: segment_pcl.cpp.o
+csv_io.o: csv_io.cpp.o
 
-.PHONY : segment_pcl.o
+.PHONY : csv_io.o
 
 # target to build an object file
-segment_pcl.cpp.o:
-	$(MAKE) -f CMakeFiles/segment_pcl.dir/build.make CMakeFiles/segment_pcl.dir/segment_pcl.cpp.o
-.PHONY : segment_pcl.cpp.o
+csv_io.cpp.o:
+	$(MAKE) -f CMakeFiles/segment_pcl.dir/build.make CMakeFiles/segment_pcl.dir/csv_io.cpp.o
+.PHONY : csv_io.cpp.o
 
-segment_pcl.i: segment_pcl.cpp.i
+csv_io.i: csv_io.cpp.i
 
-.PHONY : segment_pcl.i
+.PHONY : csv_io.i
 
 # target to preprocess a source file
-segment_pcl.cpp.i:
-	$(MAKE) -f CMakeFiles/segment_pcl.dir/build.make CMakeFiles/segment_pcl.dir/segment_pcl.cpp.i
-.PHONY : segment_pcl.cpp.i
+csv_io.cpp.i:
+	$(MAKE) -f CMakeFiles/segment_pcl.dir/build.make CMakeFiles/segment_pcl.dir/csv_io.cpp.i
+.PHONY : csv_io.cpp.i
 
-segment_pcl.s: segment_pcl.cpp.s
+csv_io.s: csv_io.cpp.s
 
-.PHONY : segment_pcl.s
+.PHONY : csv_io.s
 
 # target to generate assembly for a file
-segment_pcl.cpp.s:
-	$(MAKE) -f CMakeFiles/segment_pcl.dir/build.make CMakeFiles/segment_pcl.dir/segment_pcl.cpp.s
-.PHONY : segment_pcl.cpp.s
+csv_io.cpp.s:
+	$(MAKE) -f CMakeFiles/segment_pcl.dir/build.make CMakeFiles/segment_pcl.dir/csv_io.cpp.s
+.PHONY : csv_io.cpp.s
+
+custom_ransac.o: custom_ransac.cpp.o
+
+.PHONY : custom_ransac.o
+
+# target to build an object file
+custom_ransac.cpp.o:
+	$(MAKE) -f CMakeFiles/segment_pcl.dir/build.make CMakeFiles/segment_pcl.dir/custom_ransac.cpp.o
+.PHONY : custom_ransac.cpp.o
+
+custom_ransac.i: custom_ransac.cpp.i
+
+.PHONY : custom_ransac.i
+
+# target to preprocess a source file
+custom_ransac.cpp.i:
+	$(MAKE) -f CMakeFiles/segment_pcl.dir/build.make CMakeFiles/segment_pcl.dir/custom_ransac.cpp.i
+.PHONY : custom_ransac.cpp.i
+
+custom_ransac.s: custom_ransac.cpp.s
+
+.PHONY : custom_ransac.s
+
+# target to generate assembly for a file
+custom_ransac.cpp.s:
+	$(MAKE) -f CMakeFiles/segment_pcl.dir/build.make CMakeFiles/segment_pcl.dir/custom_ransac.cpp.s
+.PHONY : custom_ransac.cpp.s
+
+main.o: main.cpp.o
+
+.PHONY : main.o
+
+# target to build an object file
+main.cpp.o:
+	$(MAKE) -f CMakeFiles/segment_pcl.dir/build.make CMakeFiles/segment_pcl.dir/main.cpp.o
+.PHONY : main.cpp.o
+
+main.i: main.cpp.i
+
+.PHONY : main.i
+
+# target to preprocess a source file
+main.cpp.i:
+	$(MAKE) -f CMakeFiles/segment_pcl.dir/build.make CMakeFiles/segment_pcl.dir/main.cpp.i
+.PHONY : main.cpp.i
+
+main.s: main.cpp.s
+
+.PHONY : main.s
+
+# target to generate assembly for a file
+main.cpp.s:
+	$(MAKE) -f CMakeFiles/segment_pcl.dir/build.make CMakeFiles/segment_pcl.dir/main.cpp.s
+.PHONY : main.cpp.s
 
 # Help Target
 help:
@@ -159,9 +213,15 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... segment_pcl"
-	@echo "... segment_pcl.o"
-	@echo "... segment_pcl.i"
-	@echo "... segment_pcl.s"
+	@echo "... csv_io.o"
+	@echo "... csv_io.i"
+	@echo "... csv_io.s"
+	@echo "... custom_ransac.o"
+	@echo "... custom_ransac.i"
+	@echo "... custom_ransac.s"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 .PHONY : help
 
 

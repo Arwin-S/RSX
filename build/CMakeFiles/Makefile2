@@ -74,12 +74,12 @@ clean: CMakeFiles/segment_pcl.dir/clean
 CMakeFiles/segment_pcl.dir/all:
 	$(MAKE) -f CMakeFiles/segment_pcl.dir/build.make CMakeFiles/segment_pcl.dir/depend
 	$(MAKE) -f CMakeFiles/segment_pcl.dir/build.make CMakeFiles/segment_pcl.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rsx/my_ws/Robotics-For-Space-Exploration/build/CMakeFiles --progress-num=1,2 "Built target segment_pcl"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rsx/my_ws/Robotics-For-Space-Exploration/build/CMakeFiles --progress-num=1,2,3,4 "Built target segment_pcl"
 .PHONY : CMakeFiles/segment_pcl.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/segment_pcl.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/rsx/my_ws/Robotics-For-Space-Exploration/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rsx/my_ws/Robotics-For-Space-Exploration/build/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/segment_pcl.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/rsx/my_ws/Robotics-For-Space-Exploration/build/CMakeFiles 0
 .PHONY : CMakeFiles/segment_pcl.dir/rule

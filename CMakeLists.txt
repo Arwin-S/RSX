@@ -13,5 +13,6 @@ link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
 
 
-add_executable (segment_pcl segment_pcl.cpp)
+# add_executable (segment_pcl segment_pcl.cpp)
+add_executable (segment_pcl csv_io.cpp custom_ransac.cpp main.cpp)
 target_link_libraries (segment_pcl ${PCL_LIBRARIES})

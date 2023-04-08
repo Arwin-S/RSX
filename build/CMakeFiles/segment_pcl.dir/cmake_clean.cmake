@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/segment_pcl.dir/segment_pcl.cpp.o"
+  "CMakeFiles/segment_pcl.dir/csv_io.cpp.o"
+  "CMakeFiles/segment_pcl.dir/custom_ransac.cpp.o"
+  "CMakeFiles/segment_pcl.dir/main.cpp.o"
   "segment_pcl"
   "segment_pcl.pdb"
 )
