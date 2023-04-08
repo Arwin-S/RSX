@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/rsx/my_ws/Robotics-For-Space-Exploration/custom_ransac.cpp" "/home/rsx/my_ws/Robotics-For-Space-Exploration/build/CMakeFiles/segment_pcl.dir/custom_ransac.cpp.o"
   "/home/rsx/my_ws/Robotics-For-Space-Exploration/main.cpp" "/home/rsx/my_ws/Robotics-For-Space-Exploration/build/CMakeFiles/segment_pcl.dir/main.cpp.o"
   "/home/rsx/my_ws/Robotics-For-Space-Exploration/pcl_traversibility_score.cpp" "/home/rsx/my_ws/Robotics-For-Space-Exploration/build/CMakeFiles/segment_pcl.dir/pcl_traversibility_score.cpp.o"
+  "/home/rsx/my_ws/Robotics-For-Space-Exploration/segment_pcl.cpp" "/home/rsx/my_ws/Robotics-For-Space-Exploration/build/CMakeFiles/segment_pcl.dir/segment_pcl.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

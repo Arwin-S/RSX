@@ -9,7 +9,10 @@
 #include <pcl/impl/point_types.hpp>
 
 #include "csv_io.h"
+#include "pcl_traversibility_score.h"
 
+void segment_pcl(const pcl::PointCloud<pcl::PointXYZ>::Ptr rover_cloud, int local_map_dim);
+void translate_rover_to_local(pcl::PointCloud<pcl::PointXYZ> &rover_cloud, pcl::PointXYZ local_origin);
 
 
 //Example main deonstrating segment_pcl function

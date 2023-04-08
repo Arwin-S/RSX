@@ -1,5 +1,4 @@
 #include "segment_pcl.h"
-#include "pcl_traversibility_score.h"
 
 void segment_pcl(const pcl::PointCloud<pcl::PointXYZ>::Ptr rover_cloud, int local_map_dim)
 {
@@ -15,12 +14,9 @@ void segment_pcl(const pcl::PointCloud<pcl::PointXYZ>::Ptr rover_cloud, int loca
     double x_grid_sz = x_sz / local_map_dim;
     double y_grid_sz = y_sz / local_map_dim;
 
-    std::cout << min.x << " " << min.y << "\n";
-    std::cout << max.x << " " << max.y << "\n\n";
+    // std::cout << min.x << " " << min.y << "\n";
+    // std::cout << max.x << " " << max.y << "\n\n";
 
-    // length of local map sides (is a square)
-    double local_map_len = local_map_tr.x - local_map_tl.x;
-    double cell_len = local_map_len / local_map_dim;
     //std::cout << cell_len << std::endl;
 
     // // Translate crop box up by 1
@@ -61,6 +57,8 @@ void segment_pcl(const pcl::PointCloud<pcl::PointXYZ>::Ptr rover_cloud, int loca
             PointCloud<PointXYZ>::Ptr cloud_out_ptr(new pcl::PointCloud<pcl::PointXYZ>);
             *cloud_out_ptr = cloud_out;
             double score = calculateTraversabilityScore(cloud_out_ptr);
+            std::cout << "traversability score: " << score << std::endl;
+
         }
     }
 }

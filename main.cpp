@@ -1,5 +1,6 @@
 #include "custom_ransac.h"
 #include "pcl_traversibility_score.h"
+#include "segment_pcl.h"
 
 using namespace std;
 using Eigen::MatrixXd;
@@ -43,8 +44,9 @@ int main(int, char **)
 
     // calculate the traversability score
     double score = calculateTraversabilityScore(cloud);
-    std::cout << "traversability score: " << score << std::endl;
+    std::cout << "traversability score: " << score << std::endl << std::endl;
 
+    segment_pcl(cloud, 3);
 
 
 

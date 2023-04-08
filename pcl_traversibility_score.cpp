@@ -91,11 +91,11 @@ std::pair<pcl::ModelCoefficients::Ptr, pcl::PointIndices::Ptr> ransac_on_cloud(p
                                       << coefficients->values[3] << std::endl;
 
 
-  std::cerr << "Model inliers: " << inliers->indices.size () << std::endl;
-  for (const auto& idx: inliers->indices)
-    std::cerr << idx << "    " << cloud->points[idx].x << " "
-                               << cloud->points[idx].y << " "
-                               << cloud->points[idx].z << std::endl;
+  // std::cerr << "Model inliers: " << inliers->indices.size () << std::endl;
+  // for (const auto& idx: inliers->indices)
+  //   std::cerr << idx << "    " << cloud->points[idx].x << " "
+  //                              << cloud->points[idx].y << " "
+  //                              << cloud->points[idx].z << std::endl;
 
 
   return {coefficients, inliers};

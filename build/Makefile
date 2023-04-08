@@ -231,6 +231,33 @@ pcl_traversibility_score.cpp.s:
 	$(MAKE) -f CMakeFiles/segment_pcl.dir/build.make CMakeFiles/segment_pcl.dir/pcl_traversibility_score.cpp.s
 .PHONY : pcl_traversibility_score.cpp.s
 
+segment_pcl.o: segment_pcl.cpp.o
+
+.PHONY : segment_pcl.o
+
+# target to build an object file
+segment_pcl.cpp.o:
+	$(MAKE) -f CMakeFiles/segment_pcl.dir/build.make CMakeFiles/segment_pcl.dir/segment_pcl.cpp.o
+.PHONY : segment_pcl.cpp.o
+
+segment_pcl.i: segment_pcl.cpp.i
+
+.PHONY : segment_pcl.i
+
+# target to preprocess a source file
+segment_pcl.cpp.i:
+	$(MAKE) -f CMakeFiles/segment_pcl.dir/build.make CMakeFiles/segment_pcl.dir/segment_pcl.cpp.i
+.PHONY : segment_pcl.cpp.i
+
+segment_pcl.s: segment_pcl.cpp.s
+
+.PHONY : segment_pcl.s
+
+# target to generate assembly for a file
+segment_pcl.cpp.s:
+	$(MAKE) -f CMakeFiles/segment_pcl.dir/build.make CMakeFiles/segment_pcl.dir/segment_pcl.cpp.s
+.PHONY : segment_pcl.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -252,6 +279,9 @@ help:
 	@echo "... pcl_traversibility_score.o"
 	@echo "... pcl_traversibility_score.i"
 	@echo "... pcl_traversibility_score.s"
+	@echo "... segment_pcl.o"
+	@echo "... segment_pcl.i"
+	@echo "... segment_pcl.s"
 .PHONY : help
 
 
