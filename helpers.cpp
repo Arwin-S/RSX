@@ -3,6 +3,7 @@
 #include <pcl/impl/point_types.hpp>
 #include <pcl/segmentation/sac_segmentation.h>
 #include <stdlib.h>
+#include <limits.h>
 #include <cmath>
 
 // Calculate slope from a plane
@@ -66,7 +67,7 @@ std::pair<pcl::ModelCoefficients::Ptr, pcl::PointIndices::Ptr> ransac_on_cloud(p
   if (inliers->indices.size () == 0)
   {
     PCL_ERROR ("Could not estimate a planar model for the given dataset.\n");
-    return {coefficients, inliers};
+    return {nullptr, nullptr};
   }
 
   std::cerr << "Model coefficients: " << coefficients->values[0] << " " 
@@ -88,7 +89,9 @@ double calculateTraversabilityScore(pcl::PointCloud<pcl::PointXYZ>::Ptr& cloud) 
     // call ransac on the generated point cloud
     int numPoints = cloud->points.size();
     std::pair<pcl::ModelCoefficients::Ptr, pcl::PointIndices::Ptr> result = ransac_on_cloud(cloud);
-    // ****need a condition to check if the ransac was successful -> generated valid plane***
+    if (result.first == nullptr) {
+      return std::numeric_limits<double>::max();
+    }
 
     // Get coefficients of the plane
     double a = result.first->values[0];
@@ -101,5 +104,4 @@ double calculateTraversabilityScore(pcl::PointCloud<pcl::PointXYZ>::Ptr& cloud) 
 
     double traversabilityScore = standardDeviation;
     return traversabilityScore;
-
 }
