@@ -45,6 +45,9 @@ int main(int, char **)
     double score = calculateTraversabilityScore(cloud);
     std::cout << "traversability score: " << score << std::endl;
 
+
+
+
     // // Use Randomly Generated Points to test and visualize RANSAC
 
     // int numPoints = 10;
@@ -54,9 +57,6 @@ int main(int, char **)
     // // 1 point at 0 and 1 point at 100 forces matplotlib plot z axis in range 0 - 100
     // pc(0, 2) = 0;
     // pc(numPoints - 1, 2) = 100;
-
-    // Experimenting with Segmentation into X-by-X grid
-
 
     // Eigen::Vector4d plane = ransac(A);
     // cout << "Coefficents of Plane (Ax + By +Cz + D):" << endl

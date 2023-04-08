@@ -67,8 +67,8 @@ std::pair<pcl::ModelCoefficients::Ptr, pcl::PointIndices::Ptr> ransac_on_cloud(p
   // Mandatory
   seg.setModelType (pcl::SACMODEL_PLANE);
   seg.setMethodType (pcl::SAC_RANSAC);
-  seg.setDistanceThreshold (0.01);
-//   seg.setDistanceThreshold (0.1);
+  // seg.setDistanceThreshold (0.01);
+  seg.setDistanceThreshold (0.1); // <-- play around with threshold
 
 
   seg.setInputCloud (cloud);
