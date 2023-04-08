@@ -80,27 +80,16 @@ void segment_pcl(const pcl::PointCloud<pcl::PointXYZ>::Ptr rover_cloud)
     local_map_br = pcl::PointXYZ(8, -8, 0);
 
     //get min_max x and y of input cloud to segment
-    // PointT min;
-    // PointT max;
     pcl::PointXYZ min;
     pcl::PointXYZ max;
     pcl::getMinMax3D (*rover_cloud, min, max);
+    double x_sz = max.x - min.x;
+    double y_sz = max.y - min.y;
+    double x_grid_sz = x_sz / local_map_dim;
+    double y_grid_sz = y_sz / local_map_dim;
+
     std::cout << min.x << " " << min.y << "\n";
-    std::cout << max.x << " " << max.y << "\n";
-
-    // Test the PointCloud<PointT> method
-    CropBox<PointXYZ> cropBoxFilter(true);
-    cropBoxFilter.setInputCloud(rover_cloud);
-    Eigen::Vector4f min_pt(-1.0f, -1.0f, -1.0f, 1.0f);
-    Eigen::Vector4f max_pt(1.0f, 1.0f, 1.0f, 1.0f);
-
-    // Cropbox slighlty bigger then bounding box of points
-    cropBoxFilter.setMin(min_pt);
-    cropBoxFilter.setMax(max_pt);
-
-    // Cloud
-    PointCloud<PointXYZ> cloud_out;
-    cropBoxFilter.filter(cloud_out);
+    std::cout << max.x << " " << max.y << "\n\n";
 
     // length of local map sides (is a square)
     double local_map_len = local_map_tr.x - local_map_tl.x;
@@ -121,10 +110,12 @@ void segment_pcl(const pcl::PointCloud<pcl::PointXYZ>::Ptr rover_cloud)
             CropBox<PointXYZ> cropBoxFilter (true);
             cropBoxFilter.setInputCloud (rover_cloud);
             //order is bottom left --> top right
-            Eigen::Vector4f min_pt (local_map_tl.x + (cell_len * j), local_map_bl.y + (cell_len * i), -1000.0f, 1000.0f);
-            Eigen::Vector4f max_pt (local_map_tl.x + (cell_len * (j + 1)), local_map_bl.y + (cell_len * (i + 1)), 1000.0f, 1000.0f);
-            // Eigen::Vector4f min_pt (-10, -10, -1000, 1000.0f);
-            // Eigen::Vector4f max_pt (10, 10, 1000, 1000.0f);
+            // Eigen::Vector4f min_pt (local_map_tl.x + (cell_len * j), local_map_bl.y + (cell_len * i), -1000.0f, -1000.0f);
+            // Eigen::Vector4f max_pt (local_map_tl.x + (cell_len * (j + 1)), local_map_bl.y + (cell_len * (i + 1)), 1000.0f, 1000.0f);
+
+            Eigen::Vector4f min_pt (min.x + (x_grid_sz * j), min.y + (y_grid_sz * i), -1000.0f, -1000.0f);
+            Eigen::Vector4f max_pt (min.x + (x_grid_sz * (j + 1)), min.y + (y_grid_sz * (i + 1)), 1000.0f, 1000.0f);
+
             cropBoxFilter.setMin (min_pt);
             cropBoxFilter.setMax (max_pt);
 
@@ -135,7 +126,7 @@ void segment_pcl(const pcl::PointCloud<pcl::PointXYZ>::Ptr rover_cloud)
 
             for (const auto& point: cloud_out)
             {
-                std::cout << i << "th Row: " << point.x << " "
+                std::cout << i << "th Row, " << j << "th Col: " << point.x << " "
                           << point.y << " "
                           << std::endl;
             }
