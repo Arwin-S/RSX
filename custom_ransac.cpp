@@ -57,7 +57,7 @@ Eigen::Vector4d ransac(MatrixXd &in)
     toc();
 
     // write to CSV to plot in matPlotLib
-    csvWrite(in, "plotData.csv", 10);
+    csvWrite(in, "../plotData.csv", 10);
     return bestPlane;
 }
 

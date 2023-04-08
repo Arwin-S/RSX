@@ -3,6 +3,10 @@
 #include <pcl/filters/crop_box.h>
 #include <pcl/io/pcd_io.h>
 #include <pcl/point_types.h>
+#include <pcl/common/common.h>
+#include <pcl/impl/point_types.hpp>
+
+#include "csv_io.h"
 
 // tl = top left
 pcl::PointXYZ local_map_tl;
@@ -13,6 +17,14 @@ int local_map_dim = 2; // number of grid cells per map side length
 
 void translate_rover_to_local(pcl::PointCloud<pcl::PointXYZ> &rover_cloud, pcl::PointXYZ local_origin);
 void segment_pcl(const pcl::PointCloud<pcl::PointXYZ>::Ptr rover_cloud);
+
+
+struct PointT {
+    PCL_ADD_POINT4D; // adds x, y, z coordinates
+    float intensity;
+    uint8_t r, g, b;
+    EIGEN_MAKE_ALIGNED_OPERATOR_NEW // ensures proper memory alignment
+} EIGEN_ALIGN16;
 
 int main(void)
 {
@@ -66,6 +78,15 @@ void segment_pcl(const pcl::PointCloud<pcl::PointXYZ>::Ptr rover_cloud)
     local_map_tr = pcl::PointXYZ(8, 8, 0);
     local_map_bl = pcl::PointXYZ(-8, -8, 0);
     local_map_br = pcl::PointXYZ(8, -8, 0);
+
+    //get min_max x and y of input cloud to segment
+    // PointT min;
+    // PointT max;
+    pcl::PointXYZ min;
+    pcl::PointXYZ max;
+    pcl::getMinMax3D (*rover_cloud, min, max);
+    std::cout << min.x << " " << min.y << "\n";
+    std::cout << max.x << " " << max.y << "\n";
 
     // Test the PointCloud<PointT> method
     CropBox<PointXYZ> cropBoxFilter(true);
@@ -122,7 +143,7 @@ void segment_pcl(const pcl::PointCloud<pcl::PointXYZ>::Ptr rover_cloud)
         }
     }
 }
-
+//translates all points to local map frame
 void translate_rover_to_local(pcl::PointCloud<pcl::PointXYZ> &rover_cloud, pcl::PointXYZ local_origin)
 {
     for (auto &point : rover_cloud)
