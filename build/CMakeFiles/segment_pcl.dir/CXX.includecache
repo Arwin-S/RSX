@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+/home/rsx/my_ws/Robotics-For-Space-Exploration/csv_io.cpp
+csv_io.h
+/home/rsx/my_ws/Robotics-For-Space-Exploration/csv_io.h
+
 /home/rsx/my_ws/Robotics-For-Space-Exploration/csv_io.h
 eigen3/Eigen/Dense
 -
@@ -13,6 +17,10 @@ fstream
 -
 iostream
 -
+
+/home/rsx/my_ws/Robotics-For-Space-Exploration/custom_ransac.cpp
+custom_ransac.h
+/home/rsx/my_ws/Robotics-For-Space-Exploration/custom_ransac.h
 
 /home/rsx/my_ws/Robotics-For-Space-Exploration/custom_ransac.h
 iostream
@@ -37,6 +45,20 @@ pcl_traversibility_score.h
 /home/rsx/my_ws/Robotics-For-Space-Exploration/pcl_traversibility_score.h
 segment_pcl.h
 /home/rsx/my_ws/Robotics-For-Space-Exploration/segment_pcl.h
+
+/home/rsx/my_ws/Robotics-For-Space-Exploration/pcl_traversibility_score.cpp
+pcl/ModelCoefficients.h
+-
+pcl/io/pcd_io.h
+-
+pcl/impl/point_types.hpp
+-
+pcl/segmentation/sac_segmentation.h
+-
+stdlib.h
+-
+cmath
+-
 
 /home/rsx/my_ws/Robotics-For-Space-Exploration/pcl_traversibility_score.h
 pcl/ModelCoefficients.h
