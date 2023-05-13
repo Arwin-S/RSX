@@ -22,6 +22,12 @@ void segment_pcl(const pcl::PointCloud<pcl::PointXYZ>::Ptr rover_cloud, int loca
     // // Translate crop box up by 1
     // cropBoxFilter.setTranslation(Eigen::Vector3f(0, 1, 0));
 
+    std::vector<std::vector<double>> occupancy_grid (local_map_dim);
+    for (int i = 0; i < local_map_dim; i++)
+    {
+        occupancy_grid[i].resize(local_map_dim);
+    }
+
     for (int i = 0; i < local_map_dim; i++)
     {
         for (int j = 0; j < local_map_dim; j++)
@@ -57,9 +63,21 @@ void segment_pcl(const pcl::PointCloud<pcl::PointXYZ>::Ptr rover_cloud, int loca
             PointCloud<PointXYZ>::Ptr cloud_out_ptr(new pcl::PointCloud<pcl::PointXYZ>);
             *cloud_out_ptr = cloud_out;
             double score = calculateTraversabilityScore(cloud_out_ptr);
-            std::cout << "traversability score: " << score << std::endl;
+
+            occupancy_grid[local_map_dim - i -1][j] = score;
+
+            // std::cout << "traversability score: " << score << "\n";
+            // std::cout << "Min x/y: " << min_pt.x() << " " << min_pt.y() << "\n";
 
         }
+    }
+    for (int i = 0; i < local_map_dim; i++)
+    {
+        for (int j = 0; j < local_map_dim; j++)
+        {
+            std::cout << occupancy_grid[i][j] << "  ";
+        }
+        std::cout << "\n";
     }
 }
 //translates all points to local map frame
